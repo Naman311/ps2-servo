@@ -7,7 +7,8 @@ Servo esc4;
 #define dataPin 8   //brown
 #define cmndPin 9   //orange
 #define attPin 11   //yellow
-#define clockPin 10
+#define clockPin 10 //blue
+// red-3.3v and black-Gnd 
 Psx Psx;  
 
 unsigned int data = 0; 
@@ -17,9 +18,15 @@ Psx.setupPins(dataPin, cmndPin, attPin, clockPin, 10);
 
 Serial.println("100%");
 esc1.write(180);
+esc2.write(180);
+esc3.write(180);
+esc4.write(180);
 delay(1000);
 Serial.println("0%");
 esc1.write(50);
+esc2.write(50);
+esc3.write(50);
+esc4.write(50);
 delay(1000);
 Serial.println("Intialized!");
 
@@ -40,51 +47,39 @@ Serial.begin(9600);
 }
 
 void loop() {
-  //delay(500);
   int val;
   data = Psx.read();                                      // Psx.read() initiates the PSX controller and returns
   Serial.println(data); 
-  if(data == 2048)
-  {
-    esc1.writeMicroseconds(1140);
+  switch (data){
+    case 2048:            
+      esc1.writeMicroseconds();
+      break;
+    case 18432:
+      esc1.writeMicroseconds();
+      break;
+    case 1024:
+      esc2.writeMicroseconds();
+      break;
+    case 17408:            
+      esc2.writeMicroseconds();
+      break;
+    case 512:
+      esc3.writeMicroseconds();
+      break;
+    case 16896:
+      esc3.writeMicroseconds(1130);
+      break;
+    case 256:            
+      esc4.writeMicroseconds();
+      break;
+    case 16640:
+      esc4.writeMicroseconds();
+      break;
+    case 0:
+      esc1.writeMicroseconds(0);
+      esc2.writeMicroseconds(0);
+      esc3.writeMicroseconds(0);
+      esc4.writeMicroseconds(0);
+      break;
   }
-  else if(data == 18432)
-  { 
-    esc1.writeMicroseconds(1190);
-  }
-  else if(data == 1024)
-  {
-    esc2.writeMicroseconds(1140);
-  }
-  else if(data == 17408)
-  { 
-    esc2.writeMicroseconds(1190);
-  }
-  else if(data == 512)
-  {
-    esc3.writeMicroseconds(1140);
-  }
-  else if(data == 16896)
-  { 
-    esc3.writeMicroseconds(1190);
-  }
-  else if(data == 256)
-  {
-    esc4.writeMicroseconds(1140);
-  }
-  else if(data == 16640)
-  { 
-    esc4.writeMicroseconds(1190);
-  }
-  else
-  {
-    esc1.writeMicroseconds(0);
-    esc2.writeMicroseconds(0);
-    esc3.writeMicroseconds(0);
-    esc4.writeMicroseconds(0);
-  }
- 
- 
-  // put your main code here, to run repeatedly:
- // delay(20);
 }
