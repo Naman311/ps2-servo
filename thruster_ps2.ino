@@ -68,44 +68,44 @@ void loop() {
   Serial.println(data); 
   switch (data){
     case 2048:                  // first 8 seperate
-      esc1.writeMicroseconds(0);
+      esc1.writeMicroseconds(1140);
       break;
     case 18432:
-      esc1.writeMicroseconds(0);
+      esc1.writeMicroseconds(1200);
       break;
     case 1024:
-      esc2.writeMicroseconds(0);
+      esc2.writeMicroseconds(1320);
       break;
     case 17408:            
-      esc2.writeMicroseconds(0);
+      esc2.writeMicroseconds(1400);
       break;
     case 512:
-      esc3.writeMicroseconds(0);
+      esc3.writeMicroseconds(1240);
       break;
     case 16896:
-      esc3.writeMicroseconds(0);
+      esc3.writeMicroseconds(1300);
       break;
     case 256:            
-      esc4.writeMicroseconds(0);
+      esc4.writeMicroseconds(1260);
       break;
     case 16640:
-      esc4.writeMicroseconds(0);
+      esc4.writeMicroseconds(1300);
       break;
     case 4096:            //last 4 combination
-      esc1.writeMicroseconds(0);
-      esc2.writeMicroseconds(0);
+      esc1.writeMicroseconds(1140);
+      esc2.writeMicroseconds(1320);
       break;
     case 20480:
-      esc1.writeMicroseconds(0);
-      esc2.writeMicroseconds(0);
+      esc1.writeMicroseconds(1200);
+      esc2.writeMicroseconds(1400);
       break;
     case 8192:
-      esc3.writeMicroseconds(0);
-      esc4.writeMicroseconds(0);
+      esc3.writeMicroseconds(1240);
+      esc4.writeMicroseconds(1260);
       break;
     case 24576:
-      esc3.writeMicroseconds(0);
-      esc4.writeMicroseconds(0);
+      esc3.writeMicroseconds(1300);
+      esc4.writeMicroseconds(1300);
       break;    
     case 0:
       esc1.writeMicroseconds(0);
