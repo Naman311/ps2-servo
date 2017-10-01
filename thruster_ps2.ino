@@ -46,7 +46,7 @@ esc4.write(50);
 delay(1000);
 Serial.println("Intialized!");
 
-esc1.attach(7); //Specify the esc signal pin,Here as D8
+esc1.attach(3); //Specify the esc signal pin,Here as D8
 //esc1.writeMicroseconds(1000); //initialize the signal to 1000
 
 esc2.attach(6); //Specify the esc signal pin,Here as D8
@@ -68,13 +68,13 @@ void loop() {
   Serial.println(data); 
   switch (data){
     case 2048:                  // first 8 seperate
-      esc1.writeMicroseconds(1140);
+      esc1.writeMicroseconds(1150);
       break;
     case 18432:
       esc1.writeMicroseconds(1200);
       break;
     case 1024:
-      esc2.writeMicroseconds(1320);
+      esc2.writeMicroseconds(1350);
       break;
     case 17408:            
       esc2.writeMicroseconds(1400);
